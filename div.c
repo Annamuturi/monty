@@ -10,7 +10,7 @@
 void division(stack_t **stack, unsigned int line_number)
 {
 	/* variable declaration */
-	stack_t *temp = *stack;
+	stack_t *tmp = *stack;
 	stack_t *counter = *stack;
 	int i = 0;
 
@@ -24,13 +24,13 @@ void division(stack_t **stack, unsigned int line_number)
 		frees_struct(stack);
 	}
 	/* Check if the top element of the stack is zero */
-	if (temp->n == 0)
+	if (tmp->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
 		frees_struct(stack); /* free memory */
 	}
 	/* Divide the element and store the result in the second element */
-	temp->next->n = temp->next->n / temp->n;
+	tmp->next->n = tmp->next->n / tmp->n;
 	/* Pop the top element from the stack */
 	pop(stack, line_number);
 }
