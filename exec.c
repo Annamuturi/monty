@@ -5,32 +5,33 @@
  */
 void parse_line(void)
 {
+	/* variable declaration */
 	stack_t *head = NULL;
 	char *buffer = NULL, *buffer2 = NULL, **commands;
 	size_t len = 0;
 	ssize_t nread;
 	int line_counter = 0, i = 0, buff_std = buffstd;
 
-	commands = malloc(buff_std * sizeof(char *));
+	commands = malloc(buff_std * sizeof(char *)); /* Allocate memory */
 	if (commands == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-
+	/* Loop to read and process each line from the input */
 	for (line_counter = 1; (nread = getline(&buffer, &len, command_t.store_check))
 			!= -1; line_counter++)
 	{
 		if (nread == 2)
 			continue;
-		buffer2 = strtok(buffer, " \n\t$");
+		buffer2 = strtok(buffer, " \n\t$");/* tokenize the character*/
 		command_t.line = buffer;
 		if (buffer2 == NULL || buffer2[0] == '#')
 			continue;
 		validate_push_opcode(i, line_counter, commands, buffer2, head);
 		command_t.number = commands[1];
 		command_t.instructions = commands;
-		call_opcode(line_counter, &head);
+		call_opcode(line_counter, &head);/*Call the opcode function */
 	}
 	free_all(buffer, head, commands, command_t.store_check);
 }
@@ -41,6 +42,7 @@ void parse_line(void)
  */
 void call_opcode(int line_counter, stack_t **head)
 {
+
 	void (*f)(stack_t **stack, unsigned int line_number);
 
 	f = select_command(command_t.instructions);
@@ -62,18 +64,19 @@ void call_opcode(int line_counter, stack_t **head)
  * @buffer2: tokens iterator
  * @head: pointer to list
  */
+
 void validate_push_opcode(int i, int line_counter, char **commands,
 		char *buffer2, stack_t *head)
 {
 	for (i = 0; buffer2; i++)
-	{
+	{/* Store the token in the commands array */
 		commands[i] = buffer2;
-		buffer2 = strtok(NULL, " \n\t$");
+		buffer2 = strtok(NULL, " \n\t$"); /*Get the next token*/
 		if (strcmp(commands[i], "push") == 0)
-		{
+		{/* If there are tokens after "push", break the loop*/
 			if (i >= 2)
 				break;
-			if (buffer2 == NULL)
+			if (buffer2 == NULL)/*If there is no token after "push"*/
 			{
 				fprintf(stderr, "L%d: usage: push integer\n", line_counter);
 				free_all(command_t.line, head, commands, command_t.store_check);
