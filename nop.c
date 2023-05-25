@@ -1,4 +1,4 @@
-#include "alx_monty.c"
+#include "alx_monty.h"
 
 /**
  * nop - does nothing
