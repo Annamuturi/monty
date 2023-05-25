@@ -68,9 +68,9 @@ void (*select_command(char **token))(stack_t **stack,
 
 void file_open(int argc, char **argv);
 void parse_line(void);
-void validate_push_opcode(int i, int line_counter, char **commands,
+void validate_push_opcode(int i, int line_count, char **commands,
 	char *buffer2, stack_t *head);
-void call_opcode(int line_counter, stack_t **head);
+void call_opcode(int line_count, stack_t **head);
 stack_t *add_dnodeint(stack_t **head, const int n);
 stack_t *create_node_with_data(stack_t **head, int number);
 
