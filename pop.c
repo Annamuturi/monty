@@ -9,7 +9,7 @@
 
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp = *stack;
+	stack_t *tmp = *stack;
 	/*Check if the stack is empty*/
 	if (!*stack)
 	{
@@ -22,5 +22,5 @@ void pop(stack_t **stack, unsigned int line_number)
 	/* Move the stack pointer to the next element */
 	*stack = (*stack)->next;
 	/* Free the memory of the popped element */
-	free(temp);
+	free(tmp);
 }

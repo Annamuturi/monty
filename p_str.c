@@ -9,26 +9,26 @@
 
 void pstr(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp = NULL;
+	stack_t *tmp = NULL;
 	(void)line_number;
 
 	/*  Assign the stack pointer to a temporary variable */
-	temp = *stack;
+	tmp = *stack;
 
 	/* If the stack is empty, print a newline character and return */
-	if (!temp)
+	if (!tmp)
 	{
 		putchar('\n');
 		return;
 	}
 	/* Iterate through the stack and print the characters*/
-	while (temp)
+	while (tmp)
 	{
-		if (temp->n > 31 && temp->n < 127)
-			putchar(temp->n);
+		if (tmp->n > 31 && tmp->n < 127)
+			putchar(tmp->n);
 		else
 			break;
-		temp = temp->next;
+		tmp = tmp->next;
 	}
 	/* Print a newline character after printing the string */
 	putchar('\n');

@@ -9,7 +9,7 @@
 
 void pall(stack_t **stack, unsigned int line_number)
 {
-	const stack_t *temp = *stack;
+	const stack_t *tmp = *stack;
 	(void)line_number;
 
 	/*Check if the stack is empty*/
@@ -17,9 +17,9 @@ void pall(stack_t **stack, unsigned int line_number)
 		return;
 
 	/* Traverse the stack and print each element */
-	while (temp)
+	while (tmp)
 	{
-		printf("%d\n", temp->n);
-		temp = temp->next;
+		printf("%d\n", tmp->n);
+		tmp = tmp->next;
 	}
 }
