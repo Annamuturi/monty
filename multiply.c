@@ -10,7 +10,7 @@
 void mul(stack_t **stack, unsigned int line_number)
 {
 	/* variable declaration */
-	stack_t *temp = *stack;
+	stack_t *tmp = *stack;
 	stack_t *counter = *stack;
 	int i = 0;
 
@@ -24,7 +24,7 @@ void mul(stack_t **stack, unsigned int line_number)
 		frees_struct(stack); /* free memory */
 	}
 	/* Multiply the values elements and store the in the second element */
-	temp->next->n = temp->n * temp->next->n;
+	tmp->next->n = tmp->n * tmp->next->n;
 	/* Pop the top element from the stack*/
 	pop(stack, line_number);
 }
