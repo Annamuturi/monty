@@ -6,7 +6,7 @@
 void parse_line(void)
 {
 	/* variable declaration */
-	stack_t *head = NULL;
+	stack_t *anna = NULL;
 	char *buffer = NULL, *buffer2 = NULL, **commands;
 	size_t len = 0;
 	ssize_t nread;
@@ -28,19 +28,19 @@ void parse_line(void)
 		command_t.line = buffer;
 		if (buffer2 == NULL || buffer2[0] == '#')
 			continue;
-		validate_push_opcode(i, line_count, commands, buffer2, head);
+		validate_push_opcode(i, line_count, commands, buffer2, anna);
 		command_t.number = commands[1];
 		command_t.instructions = commands;
-		call_opcode(line_count, &head);/*Call the opcode function */
+		call_opcode(line_count, &anna);/*Call the opcode function */
 	}
-	free_all(buffer, head, commands, command_t.store_check);
+	free_all(buffer, anna, commands, command_t.store_check);
 }
 /**
  * call_opcode - calls on struct function to find opcode and execute
  * @line_count: line number of opcode
- * @head: pointer to list
+ * @anna: pointer to list
  */
-void call_opcode(int line_count, stack_t **head)
+void call_opcode(int line_count, stack_t **anna)
 {
 
 	void (*f)(stack_t **stack, unsigned int line_number);
@@ -50,11 +50,11 @@ void call_opcode(int line_count, stack_t **head)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_count,
 			command_t.instructions[0]);
-		free_all(command_t.line, *head, command_t.instructions,
+		free_all(command_t.line, *anna, command_t.instructions,
 			 command_t.store_check);
 		exit(EXIT_FAILURE);
 	}
-	f(head, line_count);
+	f(anna, line_count);
 }
 /**
  * validate_push_opcode - validates if push has an argument
@@ -62,11 +62,11 @@ void call_opcode(int line_count, stack_t **head)
  * @line_count: command line number
  * @commands: tokenized a line
  * @buffer2: token iterator
- * @head: pointer to list
+ * @anna: pointer to list
  */
 
 void validate_push_opcode(int i, int line_count, char **commands,
-		char *buffer2, stack_t *head)
+		char *buffer2, stack_t *anna)
 {
 	for (i = 0; buffer2; i++)
 	{/* Store the token in the commands array */
@@ -79,7 +79,7 @@ void validate_push_opcode(int i, int line_count, char **commands,
 			if (buffer2 == NULL)/*If there is no token after "push"*/
 			{
 				fprintf(stderr, "L%d: usage: push integer\n", line_count);
-				free_all(command_t.line, head, commands, command_t.store_check);
+				free_all(command_t.line, anna, commands, command_t.store_check);
 				exit(EXIT_FAILURE);
 			}
 		}
