@@ -10,7 +10,7 @@
 void sub(stack_t **stack, unsigned int line_number)
 {
 	/* variable declaration */
-	stack_t *temp = *stack;
+	stack_t *tmp = *stack;
 	stack_t *counter = *stack;
 	int i = 0;
 
@@ -24,7 +24,7 @@ void sub(stack_t **stack, unsigned int line_number)
 		frees_struct(stack); /* free memory */
 	}
 	/* Subtract the value element  and store the result in the second element */
-	temp->next->n = temp->next->n - temp->n;
+	tmp->next->n = tmp->next->n - tmp->n;
 	/*  Pop the top element from the stack */
 	pop(stack, line_number);
 }
