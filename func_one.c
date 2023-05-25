@@ -79,15 +79,15 @@ void frees_struct(stack_t **stack)
  * free_all - frees most elements
  *
  * @line: getline buffer
- * @head: pointer to list
+ * @anna: pointer to list
  * @commands: pointer to commands
  * @check: file pointer
  */
 
-void free_all(char *line, stack_t *head, char **commands, FILE *check)
+void free_all(char *line, stack_t *anna, char **commands, FILE *check)
 {
 	free(line);
-	free_stack_t(&head);
+	free_stack_t(&anna);
 	free(commands);
 	fclose(check);
 }
