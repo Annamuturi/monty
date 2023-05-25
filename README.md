@@ -38,7 +38,7 @@ $
 |--------|-----------|
 |`push`  |Pushes an element to the stack|
 |`pall`  |Prints all the values on the stack|
-|`pop'   |Removes the top element of the stack|
+|`pop`   |Removes the top element of the stack|
 |`queue` |Sets the format of the data to a queue (FIFO)|
 |`stack` |Sets the format of the data to a stack (LIFO)|
 |`pchar` |Prints the char at the top of the stack|
