@@ -1,4 +1,4 @@
-#include "monty.h"
+#include "alx_monty.h"
 /**
  * mul - multiplies top two elements, stores sum in
  * second to top and pops top element
