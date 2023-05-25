@@ -69,22 +69,22 @@ void (*select_command(char **token))(stack_t **stack,
 void file_open(int argc, char **argv);
 void parse_line(void);
 void validate_push_opcode(int i, int line_count, char **commands,
-	char *buffer2, stack_t *head);
-void call_opcode(int line_count, stack_t **head);
-stack_t *add_dnodeint(stack_t **head, const int n);
-stack_t *create_node_with_data(stack_t **head, int number);
+	char *buffer2, stack_t *anna);
+void call_opcode(int line_count, stack_t **anna);
+stack_t *add_dnodeint(stack_t **anna, const int n);
+stack_t *create_node_with_data(stack_t **anna, int number);
 
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
-void free_stack_t(stack_t **head);
+void free_stack_t(stack_t **anna);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void frees_struct(stack_t **stack);
 int isdigit_str(char *token);
-void free_all(char *line, stack_t *head, char **commands, FILE *check);
+void free_all(char *line, stack_t *anna, char **commands, FILE *check);
 void sub(stack_t **stack, unsigned int line_number);
 void division(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
