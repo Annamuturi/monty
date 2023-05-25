@@ -14,7 +14,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	stack_t *count = *stack;
 	int val = 0, a = 0;
 
-	for (; counter; i++) /* Count number of elements in the stack*/
+	for (; count; a++) /* Count number of elements in the stack*/
 		count = count->next;
 	/* Check if the stack has at least 2 elements or if it's empty */
 	if (a < 2 || !*stack || !(*stack)->next || !stack)

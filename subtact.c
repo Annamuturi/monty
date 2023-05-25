@@ -15,7 +15,7 @@ void sub(stack_t **stack, unsigned int line_number)
 	int a = 0;
 
 	/* Count the number of elements in the stack */
-	for (; count; i++)
+	for (; count; a++)
 		count = count->next;
 	/* Check if the stack has at least 2 elements or if it's empty */
 	if (a < 2 || !*stack || !(*stack)->next || !stack)

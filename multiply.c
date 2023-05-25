@@ -12,7 +12,7 @@ void mul(stack_t **stack, unsigned int line_number)
 	/* variable declaration */
 	stack_t *tmp = *stack;
 	stack_t *count = *stack;
-	int i = 0;
+	int a = 0;
 
 	/* Count the number of elements in the stack */
 	for (; count; a++)
