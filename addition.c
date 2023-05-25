@@ -15,13 +15,13 @@ void add(stack_t **stack, unsigned int line_number)
 	stack_t *tmp = *stack;
 	/* Count variable to count the number of elements */
 	stack_t *count = *stack;
-	int i = 0;
+	int a = 0;
 
 	/* Count the number of elements in the stack */
-	for (; count; i++)
+	for (; count; a++)
 		count = count->next;
 	/* Check if the stack has at least 2 elements or if it's empty */
-	if (i < 2 || !*stack || !(*stack)->next || !stack)
+	if (a < 2 || !*stack || !(*stack)->next || !stack)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		frees_struct(stack); /* Free the memory allocated */
