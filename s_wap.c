@@ -8,9 +8,9 @@
 void swap(stack_t **stack, unsigned int line_number)
 {
 	/* variable declaration */
-	stack_t *temp = NULL;
-	stack_t *temp2 = NULL;
-	stack_t *temp3 = NULL;
+	stack_t *tmp = NULL;
+	stack_t *tmp2 = NULL;
+	stack_t *tmp3 = NULL;
 	stack_t *counter = *stack;
 	int val = 0, i = 0;
 
@@ -30,16 +30,16 @@ void swap(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{/* Swap the top two elements using temporary variables */
-		temp = *stack;
-		temp2 = (*stack)->next;
-		temp3 = (*stack)->next->next;
+		tmp = *stack;
+		tmp2 = (*stack)->next;
+		tmp3 = (*stack)->next->next;
 
-		temp2->next = *stack;
-		temp3->prev = *stack;
-		temp2->prev = NULL;
-		temp->next = temp3;
-		temp->prev = temp2;
-		*stack = temp2;
+		tmp2->next = *stack;
+		tmp3->prev = *stack;
+		tmp2->prev = NULL;
+		tmp->next = tmp3;
+		tmp->prev = tmp2;
+		*stack = tmp2;
 	}
 }
 
