@@ -12,7 +12,7 @@ void add(stack_t **stack, unsigned int line_number)
 {
 	/* variable declaration */
 	/* Temporary variable to hold the top element */
-	stack_t *temp = *stack;
+	stack_t *tmp = *stack;
 	/* Counter variable to count the number of elements */
 	stack_t *counter = *stack;
 	int i = 0;
@@ -27,6 +27,6 @@ void add(stack_t **stack, unsigned int line_number)
 		frees_struct(stack); /* Free the memory allocated */
 	}
 	/*Add the values and store the result in the second element */
-	temp->next->n = temp->n + temp->next->n;
+	tmp->next->n = tmp->n + tmp->next->n;
 	pop(stack, line_number);
 }
