@@ -10,7 +10,7 @@ void parse_line(void)
 	char *buffer = NULL, *buffer2 = NULL, **commands;
 	size_t len = 0;
 	ssize_t nread;
-	int line_counter = 0, i = 0, buff_std = buffstd;
+	int line_count = 0, i = 0, buff_std = buffstd;
 
 	commands = malloc(buff_std * sizeof(char *)); /* Allocate memory */
 	if (commands == NULL)
@@ -19,8 +19,8 @@ void parse_line(void)
 		exit(EXIT_FAILURE);
 	}
 	/* Loop to read and process each line from the input */
-	for (line_counter = 1; (nread = getline(&buffer, &len, command_t.store_check))
-			!= -1; line_counter++)
+	for (line_count = 1; (nread = getline(&buffer, &len, command_t.store_check))
+			!= -1; line_count++)
 	{
 		if (nread == 2)
 			continue;
@@ -28,19 +28,19 @@ void parse_line(void)
 		command_t.line = buffer;
 		if (buffer2 == NULL || buffer2[0] == '#')
 			continue;
-		validate_push_opcode(i, line_counter, commands, buffer2, head);
+		validate_push_opcode(i, line_count, commands, buffer2, head);
 		command_t.number = commands[1];
 		command_t.instructions = commands;
-		call_opcode(line_counter, &head);/*Call the opcode function */
+		call_opcode(line_count, &head);/*Call the opcode function */
 	}
 	free_all(buffer, head, commands, command_t.store_check);
 }
 /**
  * call_opcode - calls on struct function to find opcode and execute
- * @line_counter: line number of opcode
+ * @line_count: line number of opcode
  * @head: pointer to list
  */
-void call_opcode(int line_counter, stack_t **head)
+void call_opcode(int line_count, stack_t **head)
 {
 
 	void (*f)(stack_t **stack, unsigned int line_number);
@@ -48,24 +48,24 @@ void call_opcode(int line_counter, stack_t **head)
 	f = select_command(command_t.instructions);
 	if (f == NULL)
 	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", line_counter,
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_count,
 			command_t.instructions[0]);
 		free_all(command_t.line, *head, command_t.instructions,
 			 command_t.store_check);
 		exit(EXIT_FAILURE);
 	}
-	f(head, line_counter);
+	f(head, line_count);
 }
 /**
  * validate_push_opcode - validates if push has an argument
- * @i: counter
- * @line_counter: command lin number
- * @commands: tokenized line
- * @buffer2: tokens iterator
+ * @i: count
+ * @line_count: command line number
+ * @commands: tokenized a line
+ * @buffer2: token iterator
  * @head: pointer to list
  */
 
-void validate_push_opcode(int i, int line_counter, char **commands,
+void validate_push_opcode(int i, int line_count, char **commands,
 		char *buffer2, stack_t *head)
 {
 	for (i = 0; buffer2; i++)
@@ -78,7 +78,7 @@ void validate_push_opcode(int i, int line_counter, char **commands,
 				break;
 			if (buffer2 == NULL)/*If there is no token after "push"*/
 			{
-				fprintf(stderr, "L%d: usage: push integer\n", line_counter);
+				fprintf(stderr, "L%d: usage: push integer\n", line_count);
 				free_all(command_t.line, head, commands, command_t.store_check);
 				exit(EXIT_FAILURE);
 			}
