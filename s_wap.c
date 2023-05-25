@@ -11,18 +11,18 @@ void swap(stack_t **stack, unsigned int line_number)
 	stack_t *tmp = NULL;
 	stack_t *tmp2 = NULL;
 	stack_t *tmp3 = NULL;
-	stack_t *counter = *stack;
-	int val = 0, i = 0;
+	stack_t *count = *stack;
+	int val = 0, a = 0;
 
 	for (; counter; i++) /* Count number of elements in the stack*/
-		counter = counter->next;
+		count = count->next;
 	/* Check if the stack has at least 2 elements or if it's empty */
-	if (i < 2 || !*stack || !(*stack)->next || !stack)
+	if (a < 2 || !*stack || !(*stack)->next || !stack)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		frees_struct(stack); /* free memory */
 	}
-	if (i == 2)/*If the stack has exactly 2 element,swap their values*/
+	if (a == 2)/*If the stack has exactly 2 element,swap their values*/
 	{
 		val = (*stack)->n;
 		(*stack)->n = (*stack)->next->n;
